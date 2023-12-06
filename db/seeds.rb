@@ -9,6 +9,6 @@
 Admin.create!(
   #このAdminはモデル。User.find(params[:id])のような場面で使うUserモデルと似ている
   #create!の引数にはadminテーブルに作ったカラムを指定し、保存したい値を記述する
-  email: ##任意のメールアドレス、
-  password: ## 任意のパスワード
+  email: iwatani@gmail
+  password: zxcv
 )

@@ -61,16 +61,9 @@ class Public::RegistrationsController < Devise::RegistrationsController
   #   super(resource)
   # end
 
-  def after_sign_in_path_for(resource)
-    customer_session_path
-    #ユーザ登録した後の遷移先指定
-  end
 
-
-
-  def after_sing_up_path_for(resource)
+  def after_sign_up_path_for(resource)
     customer_session_path
   end
-  　#ユーザがサイトにログインした後の遷移先指定
 
 end
