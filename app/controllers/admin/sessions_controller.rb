@@ -27,8 +27,8 @@ class Admin::SessionsController < Devise::SessionsController
   # end
 
   def after_sign_in_path_for(resource)
-    new_admin_session_path
-    #ユーザ登録した後の遷移先指定
+    admin_session_path
+    #管理者ログイン後の遷移先指定
   end
 
 end
