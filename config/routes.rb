@@ -6,10 +6,9 @@ devise_for :customers, skip: [:passwords], controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
 }
-
-namespace :customer do
-  get 'my_page', to: 'public/customers#show', as: :my_page
-end
+  scope module: :public do
+  get 'customer/my_page', to: 'customers#show'
+  end
 
 
   #管理者用
