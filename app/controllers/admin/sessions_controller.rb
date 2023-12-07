@@ -1,14 +1,17 @@
 # frozen_string_literal: true
 
 class Admin::SessionsController < Devise::SessionsController
-  before_action :authenticate_admin!
   # before_action :configure_sign_in_params, only: [:create]
+
+  def top
+
+  end
+
 
   # GET /resource/sign_in
   # def new
   #   super
   # end
-
   # POST /resource/sign_in
   # def create
   #   super
@@ -27,8 +30,13 @@ class Admin::SessionsController < Devise::SessionsController
   # end
 
   def after_sign_in_path_for(resource)
-    admin_session_path
+    admin_top_path
     #管理者ログイン後の遷移先指定
   end
+
+  def after_sign_out_path_for(resource)
+    customer_session_path
+    #遷移先のパス
+  end#ユーザがサインアウトした後の遷移先指定
 
 end

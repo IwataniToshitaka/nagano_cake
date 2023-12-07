@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
 class Public::RegistrationsController < Devise::RegistrationsController
-  before_action :configure_sign_up_params, only: [:create]
+ #before_action :configure_sign_up_params, only: [:create]
 
+  def show
+  end
   # before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
@@ -62,13 +64,12 @@ class Public::RegistrationsController < Devise::RegistrationsController
   #   super(resource)
   # end
 
-  #def after_sign_in_path_for(resource)
-  #  new_admin_session_path
-    #管理者ログイン後の遷移先指定
-  #end
-
 
   def after_sign_up_path_for(resource)
+    customer_my_page_path
+  end
+
+  def after_sign_out_path_for(resource)
     new_customer_session_path
   end
 
