@@ -8,6 +8,11 @@ devise_for :customers, skip: [:passwords], controllers: {
 }
   scope module: :public do
   get 'customer/my_page', to: 'customers#show'
+    #顧客新規登録後のマイページへの遷移
+  get 'customer/sign_in', to: 'customers#new'
+    #顧客サインイン後のマイページへの遷移
+  get 'customer/information/edit', to: 'customers#edit'
+    #顧客情報編集画面への遷移
   end
 
 
