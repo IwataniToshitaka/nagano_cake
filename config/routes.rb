@@ -14,6 +14,9 @@ devise_for :customers, skip: [:passwords], controllers: {
   get 'customer/information/edit', to: 'customers#edit'
     #顧客情報編集画面への遷移
   get 'customer/orders', to: 'customers#index'
+
+  patch 'customer/withdraw', to: 'public/customers#/withdraw'
+    #顧客の退会ステータス
   end
 
 
