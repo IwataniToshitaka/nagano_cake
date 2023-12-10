@@ -1,0 +1,37 @@
+<%= form_with model: @post_image do |f| %>
+
+<h3>商品新規登録</h3>
+
+
+<p>商品画像</p>
+  <%= f.file_field :image, accept: "image/*" %>
+
+<p>商品名</p>
+<%= f.text_area :name, placeholder: "商品名" %>
+
+<p>商品説明</p>
+  <%= f.text_area :caption, placeholder: "ここに説明文を記述します"  %>
+
+<p>税抜価格</p>
+  <%= f.text_field :price, placeholder: "1000"  %><br>
+
+
+<label>
+  <p>販売ステータス</p>
+</label>
+
+<label>
+  <%= f.radio_button :payment_method, "販売中" %>
+  <%= f.label :payment_method_selling, "販売中" %>
+</label>
+
+<label>
+  <%= f.radio_button :payment_method, "販売停止中" %>
+  <%= f.label :payment_method_stopped, "販売停止中" %>
+</label>
+<br>
+
+<%= link_to '新規登録', admin_items_new_path, class: 'btn btn-success' %>
+
+
+<% end %>

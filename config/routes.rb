@@ -15,7 +15,7 @@ devise_for :customers, skip: [:passwords], controllers: {
     #顧客情報編集画面への遷移
   get 'customer/orders', to: 'customers#index'
 
-  patch 'customer/withdraw', to: 'public/customers#/withdraw'
+  patch 'customer/withdraw', to: 'customers#withdraw'
     #顧客の退会ステータス
   end
 
@@ -27,6 +27,9 @@ devise_for :customers, skip: [:passwords], controllers: {
   }
   namespace :admin do
   get 'top', to: 'homes#top'
+  get 'items/new', to: 'items#new'
+  get 'items/:id', to: 'items#show' #商品詳細画面遷移
   end
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
