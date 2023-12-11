@@ -27,8 +27,8 @@ devise_for :customers, skip: [:passwords], controllers: {
   }
   namespace :admin do
   get 'top', to: 'homes#top'
-  get 'items/new', to: 'items#new'
-  get 'items/:id', to: 'items#show' #商品詳細画面遷移
+  resources :items, only: [:new, :create, :show]
+    #商品詳細画面遷移
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

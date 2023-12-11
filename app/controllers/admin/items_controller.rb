@@ -9,18 +9,23 @@ class Admin::ItemsController < ApplicationController
   end
 
   # 投稿データの保存
-  def create
-    @post_image = PostImage.new(post_image_params)
-    @post_image.save
-    redirect_to admin_new_items_path
+def create
+  @item = Item.new(item_params)
+  if  @item.save
+    redirect_to admin_item_path(@item.id)
+  else
+    render :new
   end
+end
+
+
 
 
   # 投稿データのストロングパラメータ
   private
 
-  def post_image_params
-    params.require(:post_image).permit(:name, :image, :introduction, :price)
+  def item_params
+    params.require(:item).permit(:name, :image, :introduction, :price)
   end
 
 end
