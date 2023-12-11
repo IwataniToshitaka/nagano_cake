@@ -7,6 +7,7 @@ class Admin::ItemsController < ApplicationController
 
   #商品の詳細画面表示
   def show
+    @item = Item.find(params[:id])
   end
 
   # 投稿データの保存
