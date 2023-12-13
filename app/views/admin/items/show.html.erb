@@ -3,6 +3,14 @@
 
 <table>
   <tr>
+    <td>商品画像</td>
+      <% if @item.image.attached? %>
+        <%= image_tag @item.image, class: 'img-thumbnail' %>
+      <% else %>
+        <p>画像がありません</p>
+      <% end %>
+  </tr>
+  <tr>
     <td>商品名</td>
     <td><%= @item.name %></td>
   </tr>
@@ -17,17 +25,8 @@
   <tr>
     <td>販売ステータス</td>
     <td>
-      <% if @item.payment_method == "販売中" %>
-          <%= "販売中" %>
-
-      <% elsif @item.payment_method == "販売停止中" %>
-          <%= "販売停止中" %>
-      <% else %>
-          <%= "未設定" %>
-      <% end %>
+   <!--ここに 販売ステータスを表示するコード要-->
     </td>
   </tr>
 </table>
 
-
-<%= f.submit '編集する', class: 'btn btn-success' %>

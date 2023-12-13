@@ -3,12 +3,12 @@ class Admin::ItemsController < ApplicationController
 
   def new
     @item = Item.new
+    #@item.image.attach
   end
 
   #商品の詳細画面表示
   def show
     @item = Item.find(params[:id])
-    @items = @itemr.post_images.page(params[:page])
   end
 
   # 投稿データの保存

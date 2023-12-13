@@ -15,14 +15,11 @@
       <td><%= item.introduction %></td>
       <td><%= item.price %></td>
       <td>
-        <% if item.payment_method == "販売中" %>
-          <%= "販売中" %>
-        <% elsif item.payment_method == "販売停止中" %>
-          <%= "販売停止中" %>
-        <% else %>
-          <%= "未設定" %>
-        <% end %>
+      <!--ここに販売ステータスを表示するコード要-->
       </td>
     </tr>
   <% end %>
 </table>
+
+
+<%= paginate @items %>
