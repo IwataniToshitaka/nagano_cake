@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
 
-  get '/', to: 'public/homes#top'
-  get 'about', to: 'public/homes#about'
-
   #顧客用
   #URL /customers/sign_in ...
 devise_for :customers, skip: [:passwords], controllers: {
@@ -11,6 +8,8 @@ devise_for :customers, skip: [:passwords], controllers: {
 }
   scope module: :public do
 
+  get 'homes/top', to: 'homes#top'
+  get 'homes/about', to: 'homes#about'
 
   get 'customer/my_page', to: 'customers#show'
     #顧客新規登録後のマイページへの遷移
@@ -33,7 +32,7 @@ devise_for :customers, skip: [:passwords], controllers: {
   namespace :admin do
   get 'top', to: 'homes#top'
   resources :items, only: [:new, :create, :show, :index]
-    #商品詳 細画面遷移
+    #商品詳細画面遷移
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
