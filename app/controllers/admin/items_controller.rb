@@ -13,20 +13,20 @@ class Admin::ItemsController < ApplicationController
 
   # 投稿データの保存
   def create
+    @item = Item.new(item_params)
     if params[:item][:image].present?
-      @item = Item.new(item_params)
       @item.image.attach(params[:item][:image])
     else
-      @item = Item.new(item_params)
-      @item.image_comment = '画像がありません'
+      @item.image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'no_image.jpg')), filename: 'no_image.jpg', content_type: 'image/jpeg')
     end
-
     if @item.save
       redirect_to admin_item_path(@item.id)
     else
       render :new
     end
   end
+
+
 
   def index
     @items = Item.page(params[:page])
