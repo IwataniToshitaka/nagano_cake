@@ -34,11 +34,17 @@
 </table>
 
 <%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %>
+<!--@cart_itemというアイテムを作成-->
+  <!--フォームがデータを送信する先のURLを指定-->
+    <!--`f`をブロック変数。ブロック内にフォームの入力項目やボタンなどを記述-->
 
 <%= f.select :quentity, (1..10)%>
-
+  <!--数量入力制限-->
 <%= f.hidden_field :item_id, :value => @item.id %>
-
+  <!--非表示のフィールドを生成-->
+  <!--カートアイテムに関連付けられた商品のIDを指定するために`item_id`-->
+  <!--`value: @item.id`という引数は、非表示フィールドのデフォルトの値を指定-->
+  <!--非表示のフィールドに指定したデータがフォームとして送信できる-->
 <%= f.submit 'カートに入れる', class: 'btn btn-success' %>
 
 <% end %>

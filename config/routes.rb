@@ -11,7 +11,7 @@ devise_for :customers, skip: [:passwords], controllers: {
   get 'homes/top', to: 'homes#top'
   get 'homes/about', to: 'homes#about'
   resources :items, only: [:new, :create, :show, :index, :edit, :update]
-  resources :cart_items, only: [:new, :create, :show, :index, :update]
+  resources :cart_items, only: [:new, :create, :show, :index, :update, :delete]
 
   get 'customer/my_page', to: 'customers#show'
     #顧客新規登録後のマイページへの遷移

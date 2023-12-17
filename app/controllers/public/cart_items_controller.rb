@@ -24,7 +24,7 @@ def update
   @cart_items = current_customer.cart_items
   #@cart_item.quantity = params[:quantity]
 
-  if @cart_items.save!
+  if @cart_items.save
     # カートアイテムの保存が成功した場合の処理
     redirect_to cart_item_path, notice: 'カート内の商品の個数を更新しました。'
   else
