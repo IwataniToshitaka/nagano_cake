@@ -1,6 +1,9 @@
 
 <h2>商品詳細</h2>
 
+
+
+
 <table>
   <tr>
     <td>商品画像</td>
@@ -30,12 +33,12 @@
   </tr>
 </table>
 
-<select id="quantity">
-  <option value="">個数選択</option>
-  <% (1..10).each do |quantity| %>
-    <option value="<%= quantity %>"><%= quantity %></option>
-  <% end %>
-</select><br>
+<%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %>
 
+<%= f.select :quentity, (1..10)%>
 
-<%= link_to 'カートに入れる', cart_items_path(item_id: @item.id), method: :patch, class: 'btn btn-success', data: { confirm: 'カートに追加してもよろしいですか？' } %>
+<%= f.hidden_field :item_id, :value => @item.id %>
+
+<%= f.submit 'カートに入れる', class: 'btn btn-success' %>
+
+<% end %>

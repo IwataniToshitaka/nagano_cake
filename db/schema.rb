@@ -54,7 +54,8 @@ ActiveRecord::Schema.define(version: 2023_12_13_084317) do
 
   create_table "cart_items", force: :cascade do |t|
     t.integer "quentity", null: false
-    t.integer "item_id"
+    t.integer "item_id", null: false
+    t.integer "customer_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["item_id"], name: "index_cart_items_on_item_id"
