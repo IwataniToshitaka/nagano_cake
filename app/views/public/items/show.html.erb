@@ -1,0 +1,41 @@
+
+<h2>商品詳細</h2>
+
+<table>
+  <tr>
+    <td>商品画像</td>
+  <% if @item.image.attached? %>
+      <%= image_tag @item.image, class: 'img-thumbnail' %>
+  <% else %>
+      <%= image_tag 'no_image.jpg', class: 'img-thumbnail' %>
+  <% end %>
+  </tr>
+  <tr>
+    <td>商品名</td>
+    <td><%= @item.name %></td>
+  </tr>
+  <tr>
+    <td>商品説明</td>
+    <td><%= @item.introduction %></td>
+  </tr>
+  <tr>
+    <td>税抜価格</td>
+    <td><%= @item.price %></td>
+  </tr>
+  <tr>
+    <td>販売ステータス</td>
+    <td>
+   <!--ここに 販売ステータスを表示するコード要-->
+    </td>
+  </tr>
+</table>
+
+<select id="quantity">
+  <option value="">個数選択</option>
+  <% (1..10).each do |quantity| %>
+    <option value="<%= quantity %>"><%= quantity %></option>
+  <% end %>
+</select><br>
+
+
+<%= link_to 'カートに入れる', cart_items_path(item_id: @item.id), method: :patch, class: 'btn btn-success', data: { confirm: 'カートに追加してもよろしいですか？' } %>

@@ -1,0 +1,23 @@
+<h2>商品一覧</h2>
+
+<table>
+  <tr>
+    <th>商品ID</th>
+    <th>商品名</th>
+    <th>税抜価格</th>
+    <th>販売ステータス</th>
+  </tr>
+  <% @items.each do |item| %>
+    <tr>
+      <td><%= item.id %></td>
+      <td><%= item.name %></td>
+      <td><%= item.price %></td>
+      <td>
+      <!--ここに販売ステータスを表示するコード要-->
+      </td>
+    </tr>
+  <% end %>
+</table>
+
+
+<%= paginate @items %>

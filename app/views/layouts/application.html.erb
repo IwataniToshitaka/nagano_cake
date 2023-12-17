@@ -21,7 +21,7 @@
           </ul>
         <% elsif admin_signed_in? %>
           <ul>
-            <li><%= link_to "商品一覧", admin_items_path %></li>
+            <li><%= link_to "商品一覧", items_path %></li>
             <li><%= link_to "会員一覧", admin_items_path %></li><!-- pathは未設定 -->
             <li><%= link_to "注文履歴一覧", new_customer_registration_path %></li><!-- pathは未設定 -->
             <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
@@ -29,7 +29,7 @@
         <% else %>
           <ul>
             <li><%= link_to "About", homes_about_path %></li>
-            <li><%= link_to "商品一覧", new_customer_session_path %></li>
+            <li><%= link_to "商品一覧", items_path %></li>
             <li><%= link_to "新規登録", new_customer_registration_path %></li>
             <li><%= link_to "ログイン", new_customer_session_path %></li>
           </ul>
