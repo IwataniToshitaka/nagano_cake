@@ -11,7 +11,7 @@ devise_for :customers, skip: [:passwords], controllers: {
   get 'homes/top', to: 'homes#top'
   get 'homes/about', to: 'homes#about'
   resources :items, only: [:new, :create, :show, :index, :edit, :update]
-  resources :cart_items, only: [:new, :create, :show, :index, :update, :delete]
+  resources :cart_items, only: [:new, :create, :show, :index, :update, :destroy]
 
   get 'customer/my_page', to: 'customers#show'
     #顧客新規登録後のマイページへの遷移
@@ -24,6 +24,8 @@ devise_for :customers, skip: [:passwords], controllers: {
 
   patch 'customer/withdraw', to: 'customers#withdraw'
     #顧客の退会ステータス
+  delete 'destroy_all_cart_items', to: 'cart_items#destroy_all', as: 'destroy_all_cart_items'
+
   end
 
 
