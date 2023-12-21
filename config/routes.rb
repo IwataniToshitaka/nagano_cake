@@ -21,6 +21,8 @@ devise_for :customers, skip: [:passwords], controllers: {
     #顧客情報編集画面への遷移
   get 'customer/orders', to: 'customers#index'
 
+  get 'order/new', to: 'orders#new'
+
 
   patch 'customer/withdraw', to: 'customers#withdraw'
     #顧客の退会ステータス
@@ -36,7 +38,9 @@ devise_for :customers, skip: [:passwords], controllers: {
   }
   namespace :admin do
   get 'top', to: 'homes#top'
+  get 'customers', to: 'customers#index'
   resources :items, only: [:new, :create, :show, :index, :edit, :update]
+
     #商品詳細画面遷移
   end
 

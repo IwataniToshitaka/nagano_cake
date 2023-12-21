@@ -1,1 +1,24 @@
 <h1>管理者のトップ画面です</h1>
+
+<h2>注文履歴一覧</h2>
+
+<table>
+  <tr>
+    <th>購入日時</th>
+    <th>購入者</th>
+    <th>注文個数</th>
+  </tr>
+  <% @orders.each do |item| %>
+    <tr>
+      <td><%= order.id %></td>
+      <td><%= order.name %></td>
+      <td><%= order.price %></td>
+      <td>
+      <!--ここに販売ステータスを表示するコード要-->
+      </td>
+    </tr>
+  <% end %>
+</table>
+
+
+<%= paginate @items %>
