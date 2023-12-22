@@ -1,0 +1,27 @@
+<h1><%= @customer.last_name %>さんの会員情報編集画面</h1>
+
+<%= form_with model: @customer, url: admin_customer_path(@customer.id), local: true, method: :patch do |f| %>
+
+
+<p>会員ID <%= @customer.id %></p>
+
+<p>氏名 <%= f.text_field :last_name, value: @customer.last_name %> <%= f.text_field :first_name, value: @customer.first_name %></p>
+
+<p>フリガナ <%= f.text_field :last_name_kana, value: @customer.last_name_kana %> <%= f.text_field :first_name_kana, value: @customer.first_name_kana %></p>
+
+<p>郵便番号 <%= f.text_field :postal_code, value: @customer.postal_code %></p>
+
+<p>電話番号 <%= f.text_field :telephone_number, value: @customer.telephone_number %></p>
+
+<p>メールアドレス <%= f.text_field :email, value: @customer.email %></p>
+
+<p>住所 <%= f.text_field :address, value: @customer.address %> </p>
+
+
+<label>
+  <p>販売ステータス</p>
+</label><br>
+
+<%= f.submit '変更を保存', class: 'btn btn-success', data: { confirm: '情報を登録してもよろしいですか？' } %>
+
+<% end %>

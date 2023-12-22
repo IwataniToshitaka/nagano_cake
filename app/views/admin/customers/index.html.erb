@@ -1,1 +1,24 @@
-<h1>管理者画面での顧客リスト</h1>
+<h2>管理者画面での顧客リスト</h2>
+
+<table>
+  <tr>
+    <th>会員ID</th>
+    <th>氏名</th>
+    <th>メールアドレス</th>
+    <th>ステータス</th>
+  </tr>
+  <% @customers.each do |customer| %>
+    <tr>
+      <td><%= customer.id %></td>
+      <td><%= link_to customer.last_name, admin_customer_path(customer.id) %></td>
+      <td><%= customer.first_name %></td>
+      <td><%= customer.email %></td>
+      <td>
+      <!--ここに販売ステータスを表示するコード要-->
+      </td>
+    </tr>
+  <% end %>
+</table>
+
+
+<%= paginate @customers %>

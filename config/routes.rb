@@ -38,7 +38,7 @@ devise_for :customers, skip: [:passwords], controllers: {
   }
   namespace :admin do
   get 'top', to: 'homes#top'
-  get 'customers', to: 'customers#index'
+  resources :customers, only: [:index, :show, :edit, :update]
   resources :items, only: [:new, :create, :show, :index, :edit, :update]
 
     #商品詳細画面遷移
