@@ -1,7 +1,7 @@
 <div class="row login-row">
   <h2>注文情報入力</h2>
   <div class="col-xs-12" style="margin-top: 50px;">
-   <%= form_with(model: @order, url: orders_pre_create_path, method: :post, local: true) do |f| %>
+   <%= form_with(model: @order, url: order_new_path, method: :post, local: true) do |f| %>
       <table class="table">
         <tbody>
           <tr>
@@ -21,14 +21,14 @@
               <div class="radio">
                 <%= radio_button_tag(:selected_address, :radio1) %>
                 <%= label_tag(:selected_address, "ご自身の住所") %>
-                <p>&emsp;<%= @customer.postal_code %><%= @customer.street_address %></p>
+                <p>&emsp;<%= @customer.postal_code %><%= @customer.address %></p>
                 <p>&emsp;<%= @customer.first_name %><%= @customer.last_name %></p>
               </div>
               <div class="radio">
                 <%= radio_button_tag(:selected_address, :radio2) %>
                 <%= label_tag(:selected_address, "登録済住所から選択") %>
                 <p>&emsp;
-                <%= collection_select(:address, :address, current_client.addresses.all, :id, :full_address, prompt: "住所を選択してください" )%>
+                <%= collection_select(:address, current_customer.address, :id, :full_address, prompt: "住所を選択してください" )%>
                 </p>
               </div>
               <div class="radio">
