@@ -13,6 +13,9 @@ devise_for :customers, skip: [:passwords], controllers: {
   resources :items, only: [:new, :create, :show, :index, :edit, :update]
   resources :cart_items, only: [:new, :create, :show, :index, :update, :destroy]
   resources :orders, only: [:new]
+  post 'orders/confirm', to: 'orders#confirm', as: :create_order_confirm
+
+  post 'orders/confirm', to: 'orders#confirm', as: :order_confirm
 
   get 'customer/my_page', to: 'customers#show'
     #顧客新規登録後のマイページへの遷移
