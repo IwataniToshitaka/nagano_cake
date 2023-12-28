@@ -12,10 +12,11 @@ devise_for :customers, skip: [:passwords], controllers: {
   get 'homes/about', to: 'homes#about'
   resources :items, only: [:new, :create, :show, :index, :edit, :update]
   resources :cart_items, only: [:new, :create, :show, :index, :update, :destroy]
-  resources :orders, only: [:new]
-  post 'orders/confirm', to: 'orders#confirm', as: :create_order_confirm
+  resources :orders, only: [:new, :create, :index]
 
-  post 'orders/confirm', to: 'orders#confirm', as: :order_confirm
+  post 'orders/confirm', to: 'orders#confirm'
+
+  get 'orders/complete', to: 'orders#complete'
 
   get 'customer/my_page', to: 'customers#show'
     #顧客新規登録後のマイページへの遷移
@@ -25,7 +26,6 @@ devise_for :customers, skip: [:passwords], controllers: {
     #顧客情報編集画面への遷移
   get 'customer/orders', to: 'customers#index'
 
-  get 'order/new', to: 'orders#new'
 
 
   patch 'customer/withdraw', to: 'customers#withdraw'

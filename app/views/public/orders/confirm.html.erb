@@ -1,0 +1,66 @@
+<div class="container p-3">
+  <div class="row">
+  <div class="col-md-12">
+    <h3>注文情報確認</h3>
+
+    <table class="table">
+      <tr>
+        <td>商品名</td>
+        <td>単価(税込)</td>
+        <td>数量</td>
+        <td>小計</td>
+      </tr>
+      <% @cart_items.each do |cart_item| %>
+        <tr>
+          <td>
+            <%= image_tag cart_item.item.image, size: "100x80" %>
+            <strong><%= cart_item.item.name %></strong>
+          </td>
+          <td><%= cart_item.item.price %></td>
+          <td><%= cart_item.quentity %></td>
+          <td><%= cart_item.item.price*cart_item.quentity %></td>
+        </tr>
+      <% end %>
+    </table>
+
+    <table class="table">
+      <tr>
+        <td>送料</td>
+        <td><%= @postage %></td>
+      </tr>
+      <tr>
+        <td>商品合計</td>
+        <td><%= @cart_items_price %></td>
+      </tr>
+      <tr>
+        <td>請求額</td>
+        <td><%= @total_amount %></td>
+      </tr>
+    </table>
+
+    <h4>支払い方法</h4>
+
+    <% if @payment_method == 'credit_card' %>
+      クレジットカード
+    <% else %>
+      銀行振込
+    <% end %>
+
+    <h4>お届け先</h4>
+    <%= @customer.postal_code %>
+    <%= @customer.address %>
+
+    <%= form_with url: orders_path, method: :post do %>
+
+      <%= hidden_field_tag 'order[customer_id]', @customer.id %>
+      <%= hidden_field_tag 'order[postal_code]', @customer.postal_code %>
+      <%= hidden_field_tag 'order[address]', @customer.address %>
+      <%= hidden_field_tag 'order[delively_name]', @customer.first_name + @customer.last_name %>
+      <%= hidden_field_tag 'order[total_amount]', @total_amount %>
+      <%= hidden_field_tag 'order[payment_method]', @payment_method %>
+      <%= hidden_field_tag 'order[postage]', @postage %>
+
+
+      <%= submit_tag "注文を確定する", class: "btn btn-success" %>
+    <% end %>
+</div>

@@ -12,8 +12,9 @@ class Public::CustomersController < ApplicationController
   def edit
   end
 
-  def index
-  end
+def index
+  @orders = Order.where(customer_id: current_customer.id).order(created_at: :desc).page(params[:page])
+end
 
   def top
   end

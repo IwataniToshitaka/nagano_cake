@@ -2,7 +2,7 @@
 
 class Public::SessionsController < Devise::SessionsController
    before_action :configure_sign_in_params, only: [:create]
-
+   before_action :customer_state, only: [:create] #退会機能確認しに行く指令
  def configure_sign_in_params
      devise_parameter_sanitizer.permit(:sign_in, keys: [:email, :encrypted_password])
  end
@@ -50,13 +50,13 @@ class Public::SessionsController < Devise::SessionsController
   # 【処理内容3】 取得したアカウントのパスワードと入力されたパスワードが一致していない場合、このメソッドを終了する
   return unless customer.valid_password?(params[:customer][:password])
   # 【処理内容4】 アクティブでない会員に対する処理
+
   if customer.is_active
     # is_activeがtrueの場合、createアクションを実行させるためメソッドの処理を抜けます
-    return
+
   else
     # is_activeがfalseの場合、サインアップ画面にリダイレクトします
     redirect_to customer_sign_up_path
-    return
   end
   end
 
