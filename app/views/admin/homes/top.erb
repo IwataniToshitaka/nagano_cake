@@ -1,6 +1,7 @@
-<h2>注文履歴一覧</h2>
+<div class="container">
+  <h2>注文履歴一覧</h2>
 
-<table>
+  <table class="table">
   <tr>
     <th>購入日時</th>
     <th>購入者</th>
@@ -8,14 +9,12 @@
   </tr>
   <% @orders.each do |order| %>
     <tr>
-      <td>
-        <%= order.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
-      </td>
-    <td><%= link_to order.delively_name, orders_path %></td>
-    <td><%= order.total_amount %></td>
+      <td><%= order.created_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
+      <td><%= link_to order.delively_name, orders_path %></td>
+      <td><%= order.total_amount %></td>
     </tr>
   <% end %>
 </table>
 
-
 <%= paginate @orders %>
+</div>

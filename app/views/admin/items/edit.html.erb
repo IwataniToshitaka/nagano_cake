@@ -1,3 +1,4 @@
+<div class="container">
 <h1>商品編集画面</h1>
 
 <%= form_with model: @item, url: admin_item_path(@item.id), local: true, method: :patch do |f| %>
@@ -23,3 +24,4 @@
 <%= f.submit '変更を保存', class: 'btn btn-success', data: { confirm: '商品を登録してもよろしいですか？' } %>
 
 <% end %>
+</div>

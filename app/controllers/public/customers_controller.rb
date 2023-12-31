@@ -10,11 +10,12 @@ class Public::CustomersController < ApplicationController
   end
 
   def edit
+    #@customer = Customer.find(params[:id]) #退会機能用
   end
 
-def index
+  def index
   @orders = Order.where(customer_id: current_customer.id).order(created_at: :desc).page(params[:page])
-end
+  end
 
   def top
   end

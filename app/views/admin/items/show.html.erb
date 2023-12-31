@@ -1,7 +1,7 @@
-
+<div class="container">
 <h2>商品詳細</h2>
 
-<table>
+<table class="table">
   <tr>
     <td>商品画像</td>
   <% if @item.image.attached? %>
@@ -30,5 +30,6 @@
   </tr>
 </table>
 
-
 <%= link_to '編集する', edit_admin_item_path, class: 'btn btn-success' %>
+
+</div>
