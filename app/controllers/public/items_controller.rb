@@ -1,7 +1,7 @@
 class Public::ItemsController < ApplicationController
 
   def index
-    @items = Item.page(params[:id])
+    @items = Item.page(params[:page])
   end
 
   def show
@@ -12,7 +12,7 @@ class Public::ItemsController < ApplicationController
   def update
   end
 
-  def delete
+  def destroy
   end
 
 end
