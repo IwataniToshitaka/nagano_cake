@@ -19,8 +19,8 @@ class Admin::CustomersController < ApplicationController
     flash[:success] = '個人情報を編集しました'
     redirect_to admin_customer_path(@customer.id)
     else
-      flash[:danger] = '個人情報の編集に失敗しました'
-      render :edit
+    flash[:danger] = '個人情報の編集に失敗しました'
+    render :edit
     end
   end
 
@@ -30,6 +30,6 @@ class Admin::CustomersController < ApplicationController
   private
 
   def customer_params
-    params.require(:customer).permit(:id, :last_name, :first_name, :last_name_kana, :first_name_kana, :postal_code, :telephone_number, :email, :address)
+    params.require(:customer).permit(:id, :last_name, :first_name, :last_name_kana, :first_name_kana, :postal_code, :telephone_number, :email, :address, :is_active)
   end
 end
