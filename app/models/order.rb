@@ -3,7 +3,7 @@ class Order < ApplicationRecord
     enum payment_method: { credit_card: 0, transfer: 1 }
 
 
-    has_many :ordered_details ,class_name: 'OrderedDetail'#中間テーブル
+    has_many :order_details
     has_many :items, through: :ordered_details #注文には商品が複数ある
 
  enum status: {

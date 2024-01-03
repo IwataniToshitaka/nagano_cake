@@ -21,7 +21,7 @@
       <% @items.each do |item| %>
         <tr>
           <td><%= item.id %></td>
-          <td><%= link_to item.name, admin_item_path(item), style: "color: black;" %></td>
+          <td><%= link_to item.name, admin_item_path(item), style: 'color: inherit' %></td>
           <td><%= item.introduction %></td>
           <td><%= item.price %></td>
           <td>

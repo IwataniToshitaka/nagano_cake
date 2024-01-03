@@ -44,6 +44,7 @@ devise_for :customers, skip: [:passwords], controllers: {
   get 'top', to: 'homes#top'
   resources :customers, only: [:index, :show, :edit, :update]
   resources :items, only: [:new, :create, :show, :index, :edit, :update]
+  resources :orders, only: [:index, :show]
 
     #商品詳細画面遷移
   end
