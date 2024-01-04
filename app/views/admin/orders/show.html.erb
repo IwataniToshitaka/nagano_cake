@@ -4,7 +4,7 @@
   <table class="table">
     <tr>
       <td>購入者</td>
-      <td><%= link_to @order.delively_name, orders_path, style: 'color: inherit' %></td>
+      <td><%= link_to @order.delively_name, admin_customer_path(@customer.id), style: 'color: inherit' %></td>
     </tr>
     <tr>
       <td>注文日</td>
@@ -49,9 +49,12 @@
       <td><%= @order_details.sum { |od| od.item.price * od.quentity } %></td>
     </tr>
       <td>送料</td>
-      <td>800</td>
+      <td colspan="3"></td>
+      <td><%= @order.postage %></td>
     <tr>
       <td>請求合計金額</td>
+      <td colspan="3"></td>
+      <td><%= @order_details.sum { |od| od.item.price * od.quentity } + @order.postage %></td>
     </tr>
   </table>
 </div>

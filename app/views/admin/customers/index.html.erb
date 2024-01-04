@@ -15,9 +15,11 @@
       <td><%= link_to customer.last_name +
         customer.first_name, admin_customer_path(customer.id), style: "color: black; text-decoration: underline;" %></td>
       <td><%= customer.email %></td>
-      <td>
-      <!--ここに販売ステータスを表示するコード要-->
-      </td>
+      <% if customer.is_active == true %>
+    <td class="green-text">有効</td>
+      <% elsif customer.is_active == false %>
+    <td class="green-text">無効</td>
+      <% end %>
     </tr>
   <% end %>
 </table>

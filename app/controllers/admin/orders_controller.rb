@@ -7,15 +7,14 @@ class Admin::OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
-    @order_details = @order.order_details #orderdetailsモデルに入力した情報をorderコントローラでも使用するため
+    @order_details = @order.order_details
     @payment_method = params[:order] ? params[:order][:payment_method] : nil
-    #@order_details = OrderDetail.find(order_id: @order.id)
+    @customer = @order.customer # 購入者の情報を取得する
   end
 
-  private
+private
 
   def order_params
-    params.require(:order).permit( :postal_code, :address, :delivaly_name, :payment_method)
+    params.require(:order).permit(:postal_code, :address, :delively_name, :payment_method)
   end
-
 end

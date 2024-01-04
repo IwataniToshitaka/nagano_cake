@@ -18,10 +18,10 @@
             <li class="nav-item mr-10"><%= link_to "LOGO", items_path, style: "color: black" %></li>
           </ul>
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item mr-10"><%= link_to "マイページ", customer_my_page_path %></li>
-            <li class="nav-item"><%= link_to "商品一覧", items_path %></li><!-- pathは未設定 -->
-            <li class="nav-item"><%= link_to "カート", cart_items_path  %></li>
-            <li class="nav-item"><%= link_to "ログアウト", destroy_customer_session_path, method: :delete %></li>
+            <li class="nav-item mr-5"><%= link_to "マイページ", customer_my_page_path, style: "color: black" %></li>
+            <li class="nav-item mr-5"><%= link_to "商品一覧", items_path, style: "color: black" %></li><!-- pathは未設定 -->
+            <li class="nav-item mr-5"><%= link_to "カート", cart_items_path, style: "color: black" %></li>
+            <li class="nav-item mr-5"><%= link_to "ログアウト", destroy_customer_session_path, method: :delete, style: "color: black" %></li>
           </ul>
           </nav>
         <% elsif admin_signed_in? %>
@@ -42,10 +42,10 @@
             <li class="nav-item mr-10"><%= link_to "LOGO", items_path, style: "color: black" %></li>
           </ul>
           <ul class="navbar-nav ml-auto">
-            <li><%= link_to "About", homes_about_path %></li>
-            <li><%= link_to "商品一覧", items_path %></li>
-            <li><%= link_to "新規登録", new_customer_registration_path %></li>
-            <li><%= link_to "ログイン", new_customer_session_path %></li>
+            <li class="nav-item mr-5"><%= link_to "About", homes_about_path, style: "color: black" %></li>
+            <li class="nav-item mr-5"><%= link_to "商品一覧", items_path, style: "color: black" %></li>
+            <li class="nav-item mr-5"><%= link_to "新規登録", new_customer_registration_path, style: "color: black" %></li>
+            <li class="nav-item mr-5"><%= link_to "ログイン", new_customer_session_path, style: "color: black" %></li>
           </ul>
           </nav>
         <% end %>

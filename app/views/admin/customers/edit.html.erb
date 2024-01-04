@@ -18,11 +18,13 @@
 <p>住所 <%= f.text_field :address, value: @customer.address %> </p>
 
   <p>会員ステータス</p>
-      <%= radio_button_tag :is_active, 0 %>
-      <label class="payment-label">有効</label>
-      <%= radio_button_tag :is_active, 1 %>
-      <label class="payment-label">無効</label>
+      <%= f.label :is_active, '有効', value: true %>
+      <%= f.radio_button :is_active, true %>
+
+      <%= f.label :is_active, '無効', value: false %>
+      <%= f.radio_button :is_active, false %>
 <br>
+
 
 <%= f.submit '変更を保存', class: 'btn btn-success', data: { confirm: '情報を登録してもよろしいですか？' } %>
 

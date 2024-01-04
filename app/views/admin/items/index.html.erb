@@ -1,17 +1,24 @@
+<div class="container">
 <h2>商品一覧</h2>
 
-<table>
+  <div class="row">
+    <div class="col-6">
+      <%= link_to '+', new_admin_item_path, class: 'btn btn-success' %>
+    </div>
+  </div>
+
+<table class="table">
   <tr>
     <th>商品ID</th>
     <th>商品名</th>
     <th>商品説明</th>
     <th>税抜価格</th>
-    <th>販売ステータス</th>
+    <!--<th>販売ステータス</th>-->
   </tr>
   <% @items.each do |item| %>
     <tr>
       <td><%= item.id %></td>
-      <td><%= item.name %></td>
+      <td><%= link_to item.name, admin_item_path(item), style: 'color: inherit' %></td>
       <td><%= item.introduction %></td>
       <td><%= item.price %></td>
       <td>
@@ -23,3 +30,5 @@
 
 
 <%= paginate @items %>
+
+</div>
