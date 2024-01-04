@@ -8,8 +8,8 @@ devise_for :customers, skip: [:passwords], controllers: {
 }
   scope module: :public do
 
-  get 'homes/top', to: 'homes#top'
-  get 'homes/about', to: 'homes#about'
+  get '/', to: 'homes#top'
+  get 'about', to: 'homes#about'
   resources :items, only: [:new, :create, :show, :index, :edit, :update]
   resources :cart_items, only: [:new, :create, :show, :index, :update, :destroy]
   resources :orders, only: [:new, :create, :index]

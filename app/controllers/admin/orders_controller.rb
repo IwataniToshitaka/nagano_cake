@@ -6,10 +6,10 @@ class Admin::OrdersController < ApplicationController
   end
 
   def show
-    @order = Order.find(params[:id])
+    @order = Order.find(params[:id]) #オーダー情報を全て入れる
     @order_details = @order.order_details
     @payment_method = params[:order] ? params[:order][:payment_method] : nil
-    @customer = @order.customer # 購入者の情報を取得する
+    @customer = @order.customer # オーダーした購入者の情報を取得する
   end
 
 private

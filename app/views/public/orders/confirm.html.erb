@@ -55,7 +55,7 @@
       <%= hidden_field_tag 'order[customer_id]', @customer.id %>
       <%= hidden_field_tag 'order[postal_code]', @customer.postal_code %>
       <%= hidden_field_tag 'order[address]', @customer.address %>
-      <%= hidden_field_tag 'order[delively_name]', @customer.first_name + @customer.last_name %>
+      <%= hidden_field_tag 'order[delively_name]', @customer.last_name + @customer.first_name %>
       <%= hidden_field_tag 'order[total_amount]', @total_amount %>
       <%= hidden_field_tag 'order[payment_method]', @payment_method %>
       <%= hidden_field_tag 'order[postage]', @postage %>
