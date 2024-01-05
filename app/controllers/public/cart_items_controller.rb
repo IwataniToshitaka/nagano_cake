@@ -27,7 +27,7 @@ class Public::CartItemsController < ApplicationController
 
   def update
      @cart_item = CartItem.find(params[:id]) # 編集したいカートアイテムの特定
-     @cart_item.quentity = params[:cart_item][:quantity] # 編集したい数量を代入
+     @cart_item.quentity = params[:cart_item][:quentity] # 編集したい数量を代入
 
     if @cart_item.save
      redirect_to cart_items_path, notice: 'カート内の商品の個数を更新しました。'

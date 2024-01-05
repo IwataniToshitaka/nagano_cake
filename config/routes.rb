@@ -8,6 +8,7 @@ devise_for :customers, skip: [:passwords], controllers: {
 }
   scope module: :public do
 
+  root 'homes#top'
   get '/', to: 'homes#top'
   get 'about', to: 'homes#about'
   resources :items, only: [:new, :create, :show, :index, :edit, :update]

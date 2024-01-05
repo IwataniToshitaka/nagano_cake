@@ -21,7 +21,7 @@
         <td><%= (cart_item.item&.price * 1.1).to_i %></td>
         <td>
           <%= form_with model: cart_item, url: cart_item_path(cart_item), method: :patch, local: true do |f| %>
-            <select name="quentity">
+            <select name="cart_item[quentity]">
               <% (1..100).each do |quentity| %>
                 <option value="<%= quentity %>" <%= 'selected' if quentity == cart_item.quentity %>><%= quentity %></option>
               <% end %>
@@ -39,7 +39,7 @@
 <table>
  <tr>
     <td colspan="15" class="text-right">
-      <%= link_to "買い物を続ける", homes_top_path, class: "btn btn-primary" %>
+      <%= link_to "買い物を続ける", root_path, class: "btn btn-primary" %>
     </td>
     <td colspan="15" class="text-right"><strong>合計金額</strong></td>
     <td><%= total %></td>

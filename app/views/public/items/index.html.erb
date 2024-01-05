@@ -16,7 +16,15 @@
       <% @items.each do |item| %>
         <tr>
           <td><%= item.id %></td>
-          <td><%= link_to item.name, admin_item_path(item), style: 'color: inherit' %></td>
+          <td>
+            <% if admin_signed_in? %>
+              <%= link_to item.name, admin_item_path(item), style: 'color: inherit' %>
+            <% elsif customer_signed_in? %>
+              <%= link_to item.name, item_path(item), style: 'color: inherit' %>
+            <% else %>
+              <%= link_to item.name, request.original_url %>
+            <% end %>
+          </td>
           <td><%= item.introduction %></td>
           <td><%= item.price %></td>
           <td>

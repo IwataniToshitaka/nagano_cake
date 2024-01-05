@@ -13,7 +13,11 @@
         <% else %>
           <%= image_tag 'no_image.jpg', class: 'img-thumbnail' %>
         <% end %>
-        <p><%= item.name %></p>
+        <% if customer_signed_in? %>
+          <p><%= link_to item.name, item_path(item), style: "color: black" %></p>
+        <% else %>
+          <p><%= item.name %></p>
+        <% end %>
         <p>￥<%= item.price %></p>
       </div>
     <% end %>
