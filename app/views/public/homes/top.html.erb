@@ -1,4 +1,26 @@
-<p>ようこそ、ながのCAKEへ！</p>
-<p>このサイトは、ケーキ販売のECサイトになります。</p>
-<p>会員でない方も商品の閲覧はできますが、</p>
-<p>購入には会員登録が必要になります。</p>
+<div class="container p-3">
+  <p class="text-ceter">ようこそ、ながのCAKEへ！</p>
+  <p class="text-ceter">このサイトは、ケーキ販売のECサイトになります。</p>
+  <p class="text-ceter">会員でない方も商品の閲覧はできますが、</p>
+  <p class="text-ceter">購入には会員登録が必要になります。</p>
+  <p class="text-ceter">新着商品</p>
+
+  <div class="item-container">
+    <% @items.each do |item| %>
+      <div class="item" style="float:left;mergin-right:10px;" %>
+        <% if item.image.attached? %>
+          <%= image_tag item.image, class: 'img-thumbnail' %>
+        <% else %>
+          <%= image_tag 'no_image.jpg', class: 'img-thumbnail' %>
+        <% end %>
+        <p><%= item.name %></p>
+        <p>￥<%= item.price %></p>
+      </div>
+    <% end %>
+  </div>
+  <% if @items.total_pages > 1 %>
+    <div style="text-align: right; clear: both;">
+      <%= link_to '全ての商品を見る', items_path %>
+    </div>
+  <% end %>
+</div>
