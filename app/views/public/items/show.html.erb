@@ -1,46 +1,23 @@
-<h2>商品詳細</h2>
+<div class="container">
+  <div class="item-container">
+    <% if @item.image.attached? %>
+      <div class="item">
+        <%= image_tag @item.image, class: 'img-thumbnail' %>
+      </div>
+    <% else %>
+      <div class="item">
+        <%= image_tag 'no_image.jpg', class: 'img-thumbnail' %>
+      </div>
+    <% end %>
+  </div>
+    <div class="item-details">
+      <p><%= @item.name %></p>
+      <p><%= @item.introduction %></p>
+      <p>￥<%= @item.price %>(税込)</p>
+    </div>
 
-<table>
-  <tr>
-    <td>商品画像</td>
-  <% if @item.image.attached? %>
-      <%= image_tag @item.image, class: 'img-thumbnail' %>
-  <% else %>
-      <%= image_tag 'no_image.jpg', class: 'img-thumbnail' %>
+  <%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %>
+    <%= f.select :quentity, (1..10), prompt: '個数選択' %>
+    <%= f.hidden_field :item_id, :value => @item.id %>
+    <%= f.submit 'カートに入れる', class: 'btn btn-success' %>
   <% end %>
-  </tr>
-  <tr>
-    <td>商品名</td>
-    <td><%= @item.name %></td>
-  </tr>
-  <tr>
-    <td>商品説明</td>
-    <td><%= @item.introduction %></td>
-  </tr>
-  <tr>
-    <td>税抜価格</td>
-    <td><%= @item.price %></td>
-  </tr>
-  <tr>
-    <td>販売ステータス</td>
-    <td>
-   <!--ここに 販売ステータスを表示するコード要-->
-    </td>
-  </tr>
-</table>
-
-<%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %>
-<!--@cart_itemというアイテムを作成-->
-  <!--フォームがデータを送信する先のURLを指定-->
-    <!--`f`をブロック変数。ブロック内にフォームの入力項目やボタンなどを記述-->
-
-<%= f.select :quentity, (1..10)%>
-  <!--数量入力制限-->
-<%= f.hidden_field :item_id, :value => @item.id %>
-  <!--非表示のフィールドを生成-->
-  <!--カートアイテムに関連付けられた商品のIDを指定するために`item_id`-->
-  <!--`value: @item.id`という引数は、非表示フィールドのデフォルトの値を指定-->
-  <!--非表示のフィールドに指定したデータがフォームとして送信できる-->
-<%= f.submit 'カートに入れる', class: 'btn btn-success' %>
-
-<% end %>

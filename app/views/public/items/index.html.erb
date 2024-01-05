@@ -1,39 +1,28 @@
 <div class="container">
-  <h2>商品一覧</h2>
+  <h2>商品一覧 (全<%= @total_items_count %>件)</h2>
 
-
-  <table class="table">
-    <thead>
-      <tr>
-        <th>商品ID</th>
-        <th>商品名</th>
-        <th>商品説明</th>
-        <th>税抜価格</th>
-        <!--<th>販売ステータス</th>-->
-      </tr>
-    </thead>
-    <tbody>
-      <% @items.each do |item| %>
-        <tr>
-          <td><%= item.id %></td>
-          <td>
-            <% if admin_signed_in? %>
-              <%= link_to item.name, admin_item_path(item), style: 'color: inherit' %>
-            <% elsif customer_signed_in? %>
-              <%= link_to item.name, item_path(item), style: 'color: inherit' %>
-            <% else %>
-              <%= link_to item.name, request.original_url %>
-            <% end %>
-          </td>
-          <td><%= item.introduction %></td>
-          <td><%= item.price %></td>
-          <td>
-            <!-- 販売ステータスを表示するコード -->
-          </td>
-        </tr>
+  <div class="item-container">
+    <% @items.each_slice(4).with_index do |items, index| %>
+      <% items.each do |item| %>
+        <div class="item" style="float:left;margin-right:10px;">
+          <% if item.image.attached? %>
+            <%= image_tag item.image, class: 'img-thumbnail' %>
+          <% else %>
+            <%= image_tag 'no_image.jpg', class: 'img-thumbnail' %>
+          <% end %>
+          <p><%= link_to item.name, item_path(item), style: 'color: inherit' %></p>
+          <p>￥<%= item.price %></p>
+        </div>
       <% end %>
-    </tbody>
-  </table>
+      <% if (index) % 4 == 0 %>
+        <div style="clear:both;"></div>
+      <% end %>
+    <% end %>
 
-<%= paginate @items, params: { controller: 'items', action: 'index' } %>
+    <div style="clear:both;"></div> <!-- 追加 -->
+    <div style="text-align:center;"> <!-- 追加 -->
+      <%= paginate @items %> <!-- 追加 -->
+    </div> <!-- 追加 -->
+  </div>
 </div>
+
