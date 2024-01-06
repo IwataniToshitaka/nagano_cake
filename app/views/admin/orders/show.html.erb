@@ -31,12 +31,16 @@
       <td>数量</td>
       <td>小計</td>
     </tr>
+
+
+    <% subtotal = 0 %>
     <% @order_details.each do |order_detail| %>
+      <% subtotal += (order_detail.price * 1.1).to_i * (order_detail.quentity) %>
       <tr>
         <td><%= order_detail.item.name %></td>
-        <td><%= order_detail.item.price %></td>
+        <td><%= (order_detail.price * 1.1).to_i %></td>
         <td><%= order_detail.quentity %></td>
-        <td><%= order_detail.item.price * order_detail.quentity %></td>
+        <td><%= (order_detail.price * 1.1).to_i * order_detail.quentity %></td>
       </tr>
     <% end %>
   </table>
@@ -46,15 +50,15 @@
     <tr>
       <td>商品合計</td>
       <td colspan="3"></td>
-      <td><%= @order_details.sum { |od| od.item.price * od.quentity } %></td>
+      <td><%= subtotal %></td>
     </tr>
       <td>送料</td>
       <td colspan="3"></td>
-      <td><%= @order.postage %></td>
+      <td><%= @postage %></td>
     <tr>
       <td>請求合計金額</td>
       <td colspan="3"></td>
-      <td><%= @order_details.sum { |od| od.item.price * od.quentity } + @order.postage %></td>
+      <td><%= subtotal + @postage %></td>
     </tr>
   </table>
 </div>

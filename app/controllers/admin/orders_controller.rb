@@ -10,6 +10,8 @@ class Admin::OrdersController < ApplicationController
     @order_details = @order.order_details
     @payment_method = params[:order] ? params[:order][:payment_method] : nil
     @customer = @order.customer # オーダーした購入者の情報を取得する
+    @postage = 800
+
   end
 
 private

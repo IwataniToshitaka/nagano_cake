@@ -4,9 +4,8 @@
   <div style="position: fixed; top: 20%; left: 10%;">
     <strong>注文情報</strong>
     <table class="table">
-      <% @orders.each do |order| %>
         <tr>
-          <td>注文日</td><td><%= order.created_at.strftime('%Y/%m/%d') %></td>
+          <td>注文日</td><td><%= @orders.first.created_at.strftime('%Y/%m/%d') %></td>
         </tr>
         <tr>
           <td>配送先</td>
@@ -21,10 +20,8 @@
               <% end %>
           </td>
         </tr>
-      <% end %>
     </table>
   </div>
-
 
   <div style="position: fixed; top: 50%; left: 10%;">
     <strong>注文内容</strong>
@@ -35,7 +32,6 @@
             <td>個数</td>
             <td>小計</td>
           </tr>
-
         <% subtotal = 0 %>
         <% @order_details.each do |order_detail| %>
           <% subtotal += (order_detail.price * 1.1).to_i * (order_detail.quentity) %>
@@ -59,12 +55,9 @@
           <tr>
             <td>商品合計</td><td><%= subtotal %></td>
           </tr>
-
           <tr>
             <td>請求金額</td><td><%= @postage + subtotal %></td>
           </tr>
-
       </table>
   </div>
-
 </div>

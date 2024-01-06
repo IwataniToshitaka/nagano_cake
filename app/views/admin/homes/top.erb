@@ -7,11 +7,11 @@
     <th>購入者</th>
     <th>注文個数</th>
   </tr>
-  <% @orders.each do |order| %>
+  <% @orders.order(created_at: :desc).each do |order| %>
     <tr>
       <td><%= link_to order.created_at.strftime('%Y/%m/%d %H:%M:%S'), admin_order_path(order.id), style: 'color: inherit' %></td>
       <td><%= order.delively_name %></td>
-      <td><%= order.instance_variable_get(:@total_quentity) %></td>
+      <td><%= order.order_details.sum(:quentity) %></td>
     </tr>
   <% end %>
 </table>

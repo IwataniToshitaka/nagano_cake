@@ -54,11 +54,10 @@ class Public::OrdersController < ApplicationController
         OrderDetail.create!(order_id: @order.id, item_id: cart_item.item.id, price: cart_item.item.price, quentity: cart_item.quentity, status: 1)  # quentityをquantityに修正します
       end
     end
-
       @cart_items.destroy_all
-      redirect_to orders_complete_path
+      redirect_to complete_path
     else
-    render :items
+      render :items
     end
   end
 
@@ -73,11 +72,8 @@ class Public::OrdersController < ApplicationController
     @orders = Order.where(customer_id: current_customer.id).order(created_at: :desc).page(params[:page])
     @customer = current_customer
     @postage = 800
-    @items = Item.all
   end
 
-  def complete
-  end
 
   private
 

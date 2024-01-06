@@ -30,12 +30,12 @@ class Public::SessionsController < Devise::SessionsController
   # end
 
   def after_sign_in_path_for(resource)
-    customer_my_page_path
+    top_path
   end
     #既に登録済みのユーザがログインした後の遷移先指定
 
   def after_sign_out_path_for(resource)
-    customer_session_path
+    top_path
     #遷移先のパス
     #ユーザがサインアウトした後の遷移先指定
   end

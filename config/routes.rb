@@ -8,8 +8,7 @@ devise_for :customers, skip: [:passwords], controllers: {
 }
   scope module: :public do
 
-  root 'homes#top'
-  get '/', to: 'homes#top'
+  get 'top', to: 'homes#top'
   get 'about', to: 'homes#about'
   resources :items, only: [:new, :create, :show, :index, :edit, :update]
   resources :cart_items, only: [:new, :create, :show, :index, :update, :destroy]
@@ -18,7 +17,7 @@ devise_for :customers, skip: [:passwords], controllers: {
 
   post 'orders/confirm', to: 'orders#confirm'
 
-  get 'orders/complete', to: 'orders#complete'
+  get 'complete', to: 'orders#complete'
 
   patch 'customer/my_page', to: 'customers#update', as: 'customer_my_page'
 

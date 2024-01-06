@@ -40,7 +40,7 @@ class Public::CustomersController < ApplicationController
     @customer.update(is_active: false)
     reset_session
     flash[:notice] = "退会処理を実行いたしました"
-    redirect_to customer_my_page_path
+    redirect_to top_path
   end
 
   #ストロングパラメータ

@@ -1,5 +1,5 @@
 <div class="container">
-<h3><%= @customer.last_name %>さんの会員情報編集画面</h3>
+<h3>会員情報編集画面</h3>
   <%= form_with model: @customer, url: admin_customer_path(@customer.id), local: true, method: :patch do |f| %>
 
 <table class="table">
