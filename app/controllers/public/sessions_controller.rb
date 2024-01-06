@@ -56,7 +56,7 @@ class Public::SessionsController < Devise::SessionsController
 
   else
     # is_activeがfalseの場合、サインアップ画面にリダイレクトします
-    redirect_to customer_sign_up_path
+    redirect_to customer_sign_in_path
   end
   end
 
