@@ -35,7 +35,7 @@ class Admin::SessionsController < Devise::SessionsController
   end
 
   def after_sign_out_path_for(resource)
-    customer_session_path
+    new_admin_session_path
     #遷移先のパス
   end#ユーザがサインアウトした後の遷移先指定
 

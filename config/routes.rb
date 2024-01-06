@@ -13,7 +13,7 @@ devise_for :customers, skip: [:passwords], controllers: {
   get 'about', to: 'homes#about'
   resources :items, only: [:new, :create, :show, :index, :edit, :update]
   resources :cart_items, only: [:new, :create, :show, :index, :update, :destroy]
-  resources :orders, only: [:new, :create, :index]
+  resources :orders, only: [:new, :create, :index, :show]
   resources :customers, only: [:new, :edit, :show]
 
   post 'orders/confirm', to: 'orders#confirm'
@@ -50,7 +50,9 @@ devise_for :customers, skip: [:passwords], controllers: {
   resources :items, only: [:new, :create, :show, :index, :edit, :update]
   resources :orders, only: [:index, :show]
 
-    #商品詳細画面遷移
+  delete 'admin/sign_out', to: 'admin/sessions#destroy', as: :destroy_admin_session
+
+  #delete 'sign_out', to: 'sessions#destroy_admin_session', as: :destroy_admin_session
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

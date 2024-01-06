@@ -6,11 +6,11 @@
       <% items.each do |item| %>
         <div class="item" style="float:left;margin-right:10px;">
           <% if item.image.attached? %>
-            <%= image_tag item.image, class: 'img-thumbnail' %>
+            <%= link_to image_tag(item.image, class: 'img-thumbnail'), item_path(item) %>
           <% else %>
-            <%= image_tag 'no_image.jpg', class: 'img-thumbnail' %>
+            <%= link_to image_tag('no_image.jpg', class: 'img-thumbnail'), item_path(item) %>
           <% end %>
-          <p><%= link_to item.name, item_path(item), style: 'color: inherit' %></p>
+          <p><%= item.name %></p>
           <p>￥<%= item.price %></p>
         </div>
       <% end %>
