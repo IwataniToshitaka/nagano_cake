@@ -10,10 +10,13 @@ devise_for :customers, skip: [:passwords], controllers: {
 
   get 'top', to: 'homes#top'
   get 'about', to: 'homes#about'
+
   resources :items, only: [:new, :create, :show, :index, :edit, :update]
   resources :cart_items, only: [:new, :create, :show, :index, :update, :destroy]
   resources :orders, only: [:new, :create, :index, :show]
   resources :customers, only: [:new, :edit, :show]
+
+  get 'customer/top', to: 'customers#top'
 
   post 'orders/confirm', to: 'orders#confirm'
 

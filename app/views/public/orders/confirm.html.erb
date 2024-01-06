@@ -51,7 +51,7 @@
     <%= @customer.postal_code %>
     <%= @customer.address %>
 
-    <%= form_with url: order_path, method: :post do %>
+    <%= form_with url: orders_path, method: :post do %>
 
       <%= hidden_field_tag 'order[customer_id]', @customer.id %>
       <%= hidden_field_tag 'order[postal_code]', @customer.postal_code %>
